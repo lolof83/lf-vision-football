@@ -1,13 +1,1032 @@
-<!doctype html><html lang='fr'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>LF Vision Football</title><link rel='stylesheet' href='style.css'></head><body>
-<header><a class='brand' href='#accueil'><b>LF</b><span>VISION FOOTBALL<small>CONSTRUIRE • TRANSMETTRE • FAIRE PROGRESSER</small></span></a><button id='menu'>☰</button><nav><a href='#accueil'>Accueil</a><a href='#demarche'>Ma démarche</a><a href='#guide'>Le guide</a><a href='#outils'>La boîte à outils</a><a href='#apropos'>À propos</a></nav></header>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LF Vision Football : expérience, outils et réflexion pour aider les éducateurs à construire leur propre vision du football.">
+
+  <title>LF Vision Football</title>
+
+  <style>
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:Arial,Helvetica,sans-serif;
+      color:#0b203b;
+      background:#fff;
+      line-height:1.55;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    img{
+      display:block;
+      max-width:100%;
+    }
+
+    :root{
+      --navy:#061728;
+      --navy2:#09233c;
+      --blue:#087df5;
+      --blue2:#0068d9;
+      --white:#ffffff;
+      --soft:#f2f7fc;
+      --text:#10243d;
+      --grey:#617184;
+    }
+
+    /* HEADER */
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 5%;
+      min-height:78px;
+      background:rgba(4,20,36,.97);
+      color:white;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .brand img{
+      width:64px;
+      height:64px;
+      object-fit:cover;
+      border-radius:10px;
+    }
+
+    .brand-text strong{
+      display:block;
+      font-size:19px;
+      letter-spacing:.5px;
+    }
+
+    .brand-text span{
+      display:block;
+      margin-top:2px;
+      font-size:9px;
+      letter-spacing:1.5px;
+      color:#b9c6d5;
+    }
+
+    nav{
+      display:flex;
+      align-items:center;
+      gap:28px;
+      font-size:14px;
+    }
+
+    nav a{
+      color:#fff;
+      opacity:.88;
+      transition:.2s;
+    }
+
+    nav a:hover{
+      color:#1688ff;
+      opacity:1;
+    }
+
+    #menu{
+      display:none;
+      border:0;
+      background:none;
+      color:#fff;
+      font-size:32px;
+      cursor:pointer;
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:660px;
+      position:relative;
+      display:flex;
+      align-items:center;
+      padding:80px 6%;
+      overflow:hidden;
+      color:#fff;
+      background:
+        linear-gradient(90deg,
+          rgba(2,16,29,.97) 0%,
+          rgba(2,16,29,.88) 40%,
+          rgba(2,16,29,.45) 68%,
+          rgba(2,16,29,.2) 100%
+        ),
+        url('hero-coach.png') center right / cover no-repeat;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      max-width:660px;
+    }
+
+    .eyebrow{
+      color:#2695ff;
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      margin-bottom:22px;
+    }
+
+    .hero h1{
+      font-size:58px;
+      line-height:1.02;
+      text-transform:uppercase;
+      letter-spacing:-1.5px;
+      margin-bottom:24px;
+    }
+
+    .hero h1 span{
+      color:#1688ff;
+    }
+
+    .hero p{
+      max-width:580px;
+      font-size:18px;
+      line-height:1.7;
+      color:#e4ebf2;
+      margin-bottom:32px;
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:54px;
+      padding:0 25px;
+      border-radius:6px;
+      font-weight:700;
+      font-size:14px;
+      text-transform:uppercase;
+      transition:.2s;
+    }
+
+    .btn-primary{
+      background:#087df5;
+      color:#fff;
+    }
+
+    .btn-primary:hover{
+      background:#006ad7;
+    }
+
+    .btn-secondary{
+      border:1px solid rgba(255,255,255,.8);
+      color:#fff;
+      background:rgba(2,16,29,.3);
+    }
+
+    /* 4 PILIERS */
+
+    .pillars{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      background:#061728;
+      color:white;
+      border-top:1px solid rgba(255,255,255,.1);
+    }
+
+    .pillar{
+      padding:30px 20px;
+      text-align:center;
+      border-right:1px solid rgba(255,255,255,.12);
+    }
+
+    .pillar:last-child{
+      border-right:0;
+    }
+
+    .pillar .icon{
+      color:#1589ff;
+      font-size:34px;
+      margin-bottom:8px;
+    }
+
+    .pillar strong{
+      display:block;
+      font-size:15px;
+      text-transform:uppercase;
+      margin-bottom:5px;
+    }
+
+    .pillar span{
+      color:#bfcbd6;
+      font-size:13px;
+    }
+
+    /* QUOTE */
+
+    .quote{
+      padding:48px 8%;
+      background:#fff;
+      text-align:center;
+    }
+
+    .quote blockquote{
+      max-width:850px;
+      margin:auto;
+      font-size:22px;
+      font-style:italic;
+      color:#1b3048;
+    }
+
+    .quote blockquote:before{
+      content:"“";
+      color:#1688ff;
+      font-size:54px;
+      font-weight:bold;
+      vertical-align:-15px;
+      margin-right:8px;
+    }
+
+    /* CARDS */
+
+    .explore{
+      padding:70px 5% 80px;
+      background:#f5f8fb;
+    }
+
+    .section-head{
+      text-align:center;
+      max-width:750px;
+      margin:0 auto 42px;
+    }
+
+    .section-head small{
+      display:block;
+      color:#1688ff;
+      letter-spacing:3px;
+      font-weight:bold;
+      text-transform:uppercase;
+      margin-bottom:8px;
+    }
+
+    .section-head h2{
+      font-size:38px;
+      color:#081b31;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+      max-width:1180px;
+      margin:auto;
+    }
+
+    .card{
+      position:relative;
+      min-height:310px;
+      border-radius:12px;
+      overflow:hidden;
+      background:linear-gradient(150deg,#0b2b49,#061727);
+      color:#fff;
+      padding:28px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      box-shadow:0 14px 30px rgba(8,32,57,.13);
+      transition:.25s;
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+    }
+
+    .card:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 80% 15%,rgba(16,137,255,.22),transparent 38%);
+      pointer-events:none;
+    }
+
+    .card .num{
+      position:relative;
+      z-index:2;
+      color:#1688ff;
+      font-size:14px;
+      font-weight:bold;
+      margin-bottom:12px;
+    }
+
+    .card h3{
+      position:relative;
+      z-index:2;
+      font-size:24px;
+      margin-bottom:10px;
+    }
+
+    .card p{
+      position:relative;
+      z-index:2;
+      font-size:14px;
+      color:#c5d0db;
+    }
+
+    .card .arrow{
+      position:relative;
+      z-index:2;
+      margin-top:24px;
+      width:38px;
+      height:38px;
+      border:1px solid #1688ff;
+      color:#1688ff;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+    }
+
+    /* DEMARCHE */
+
+    .demarche{
+      padding:80px 6%;
+      background:#071827;
+      color:#fff;
+    }
+
+    .demarche .section-head h2{
+      color:white;
+    }
+
+    .demarche .intro{
+      text-align:center;
+      max-width:850px;
+      margin:-18px auto 45px;
+      color:#c9d5df;
+      font-size:17px;
+    }
+
+    .steps{
+      max-width:1050px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+
+    .step{
+      background:#0b253f;
+      border-left:4px solid #1688ff;
+      padding:22px;
+      min-height:140px;
+      border-radius:5px;
+    }
+
+    .step b{
+      display:block;
+      color:#1688ff;
+      font-size:13px;
+      margin-bottom:8px;
+    }
+
+    .step strong{
+      display:block;
+      font-size:18px;
+      margin-bottom:5px;
+    }
+
+    .step span{
+      color:#acbccb;
+      font-size:13px;
+    }
+
+    /* GUIDE */
+
+    .guide{
+      padding:80px 6%;
+      background:#fff;
+    }
+
+    .guide-grid{
+      max-width:1100px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+
+    .guide-item{
+      border:1px solid #dbe5ef;
+      border-radius:8px;
+      padding:20px;
+      background:#fafcfe;
+    }
+
+    .guide-item b{
+      color:#1688ff;
+      display:block;
+      margin-bottom:6px;
+    }
+
+    /* OUTILS */
+
+    .tools{
+      padding:80px 6%;
+      background:#eef5fb;
+    }
+
+    .tool-grid{
+      max-width:1100px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:15px;
+    }
+
+    .tool{
+      background:white;
+      border-radius:8px;
+      padding:22px;
+      box-shadow:0 8px 20px rgba(0,35,65,.05);
+      border-top:3px solid #1688ff;
+    }
+
+    .tool strong{
+      display:block;
+      margin-bottom:6px;
+      color:#09213b;
+    }
+
+    .tool span{
+      font-size:13px;
+      color:#657589;
+    }
+
+    /* ABOUT */
+
+    .about{
+      padding:80px 7%;
+      color:white;
+      background:
+        linear-gradient(90deg,rgba(4,20,36,.97),rgba(4,20,36,.82)),
+        url('hero-coach.png') center / cover no-repeat;
+    }
+
+    .about-inner{
+      max-width:850px;
+    }
+
+    .about h2{
+      font-size:38px;
+      margin-bottom:18px;
+    }
+
+    .about p{
+      color:#d0dae3;
+      font-size:17px;
+      max-width:780px;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#03111f;
+      color:#fff;
+      padding:28px 5%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .footer-brand img{
+      width:48px;
+      height:48px;
+      object-fit:cover;
+      border-radius:8px;
+    }
+
+    footer small{
+      color:#9eafbd;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:850px){
+
+      header{
+        min-height:76px;
+        padding:10px 5%;
+      }
+
+      .brand img{
+        width:50px;
+        height:50px;
+      }
+
+      .brand-text strong{
+        font-size:15px;
+      }
+
+      .brand-text span{
+        font-size:7px;
+        letter-spacing:.8px;
+      }
+
+      #menu{
+        display:block;
+      }
+
+      nav{
+        display:none;
+        position:absolute;
+        top:76px;
+        left:0;
+        right:0;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:0;
+        background:#061728;
+        border-top:1px solid rgba(255,255,255,.08);
+        box-shadow:0 12px 20px rgba(0,0,0,.2);
+      }
+
+      nav.open{
+        display:flex;
+      }
+
+      nav a{
+        width:100%;
+        padding:18px 7%;
+        border-bottom:1px solid rgba(255,255,255,.08);
+      }
+
+      .hero{
+        min-height:720px;
+        align-items:flex-end;
+        padding:70px 7% 55px;
+        background:
+          linear-gradient(0deg,
+            rgba(2,16,29,.98) 0%,
+            rgba(2,16,29,.94) 45%,
+            rgba(2,16,29,.42) 100%
+          ),
+          url('hero-coach.png') 62% center / cover no-repeat;
+      }
+
+      .hero-content{
+        max-width:100%;
+      }
+
+      .eyebrow{
+        font-size:11px;
+        letter-spacing:2px;
+      }
+
+      .hero h1{
+        font-size:42px;
+      }
+
+      .hero p{
+        font-size:16px;
+      }
+
+      .actions{
+        flex-direction:column;
+        align-items:stretch;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .pillars{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .pillar{
+        border-bottom:1px solid rgba(255,255,255,.12);
+      }
+
+      .cards,
+      .steps,
+      .guide-grid,
+      .tool-grid{
+        grid-template-columns:1fr;
+      }
+
+      .section-head h2{
+        font-size:31px;
+      }
+
+      .card{
+        min-height:235px;
+      }
+
+      .quote blockquote{
+        font-size:19px;
+      }
+
+      footer{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
+    @media(max-width:480px){
+
+      .brand-text span{
+        display:none;
+      }
+
+      .hero{
+        min-height:680px;
+      }
+
+      .hero h1{
+        font-size:37px;
+      }
+
+      .pillars{
+        grid-template-columns:1fr;
+      }
+
+      .pillar{
+        border-right:0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="#accueil" class="brand">
+    <img src="logo-lf.png" alt="Logo LF Vision Football">
+    <div class="brand-text">
+      <strong>LF VISION FOOTBALL</strong>
+      <span>CONSTRUIRE • TRANSMETTRE • FAIRE PROGRESSER</span>
+    </div>
+  </a>
+
+  <nav>
+    <a href="#accueil">Accueil</a>
+    <a href="#demarche">Ma démarche</a>
+    <a href="#guide">Le guide</a>
+    <a href="#outils">La boîte à outils</a>
+    <a href="#apropos">À propos</a>
+  </nav>
+
+  <button id="menu" aria-label="Ouvrir le menu">☰</button>
+</header>
+
+
 <main>
-<section class='hero' id='accueil'><div><p class='eyebrow'>CONSTRUIRE • TRANSMETTRE • FAIRE PROGRESSER</p><h1>Construisez votre propre <em>vision du football</em></h1><p class='lead'>Je partage mon expérience, ma façon de construire une saison, d'accompagner un groupe et de faire progresser les joueurs. Pas une méthode à recopier : des clés pour construire la vôtre.</p><div class='buttons'><a class='btn' href='#demarche'>Découvrir ma démarche</a><a class='btn secondary' href='#outils'>Accéder aux outils</a></div></div><div class='pitch'>LF<span>VISION<br>FOOTBALL</span></div></section>
-<section class='three'><article><b>COMPRENDRE</b><h2>Le rôle de l'éducateur</h2><p>Philosophie • Posture • Relation joueur • Communication • Valeurs</p></article><article><b>CONSTRUIRE</b><h2>De l'idée au terrain</h2><p>Projet de jeu • Saison • Cycles • Séances • Match • Adaptation</p></article><article><b>AGIR</b><h2>La boîte à outils</h2><p>Planifications • Fiches séances • Plan de jeu • Observations • Évaluations</p></article></section>
-<section id='demarche'><p class='eyebrow'>MA DÉMARCHE</p><h2>Une direction, pas un programme figé.</h2><p class='intro'>Observer, comprendre, planifier, construire, intervenir, évaluer et adapter : une démarche vivante, toujours reliée au terrain.</p><div class='steps'>
-<div><i>01</i><b>Connaître son groupe</b><span>Observer avant de décider.</span></div><div><i>02</i><b>Définir son projet</b><span>Donner une direction.</span></div><div><i>03</i><b>Fixer ses priorités</b><span>Choisir ce qui compte maintenant.</span></div><div><i>04</i><b>Planifier</b><span>Structurer sans figer.</span></div><div><i>05</i><b>Construire ses séances</b><span>Créer des situations qui ont du sens.</span></div><div><i>06</i><b>Accompagner le joueur</b><span>Individualiser pour faire progresser.</span></div><div><i>07</i><b>Piloter le match</b><span>Observer, comprendre et intervenir.</span></div><div><i>08</i><b>Évaluer</b><span>Mesurer pour comprendre.</span></div><div><i>09</i><b>Adapter</b><span>Faire évoluer son travail.</span></div></div>
-<blockquote>« Structurer davantage l'environnement pour laisser davantage de liberté au joueur. »</blockquote></section>
-<section id='guide' class='light'><p class='eyebrow'>LE GUIDE DE L'ÉDUCATEUR</p><h2>Bien plus qu'un jeu, une vraie formation.</h2><p class='intro'>Des repères issus du terrain pour comprendre son rôle, accompagner les joueurs et progresser soi-même comme éducateur.</p><div class='grid guide'><div>01<br><b>Notre rôle d'éducateur</b></div><div>02<br><b>Notre philosophie</b></div><div>03<br><b>Les qualités de l'éducateur</b></div><div>04<br><b>La posture de l'éducateur</b></div><div>05<br><b>La relation éducateur / joueur</b></div><div>06<br><b>La conduite de l'entraînement</b></div><div>07<br><b>L'évaluation et le suivi</b></div><div>08<br><b>Le développement continu</b></div><div>09<br><b>L'éthique et les valeurs</b></div><div>10<br><b>La gestion du groupe</b></div><div>11<br><b>La communication et l'écoute</b></div><div>12<br><b>L'adaptation et la progression</b></div></div></section>
-<section id='outils'><p class='eyebrow'>LA BOÎTE À OUTILS</p><h2>Des fiches concrètes pour le terrain.</h2><p class='intro'>Des supports pratiques pour structurer la réflexion, préparer, observer, analyser et suivre la progression.</p><div class='grid tools'><div><b>Thème de travail</b><span>Préparer thème et objectifs.</span></div><div><b>Plan de jeu</b><span>Préparer le match.</span></div><div><b>Bilan de match</b><span>Analyser et décider.</span></div><div><b>Profil du joueur</b><span>Connaître le joueur.</span></div><div><b>Observation match – joueur</b><span>Observer en compétition.</span></div><div><b>Suivi de progression</b><span>Mesurer l'évolution.</span></div><div><b>Planification annuelle</b><span>Donner une direction.</span></div><div><b>Planification du cycle</b><span>Organiser 8 semaines.</span></div><div><b>Fiche séance</b><span>Passer de l'idée au terrain.</span></div></div></section>
-<section id='apropos' class='about'><p class='eyebrow'>À PROPOS</p><h2>Mon expérience, votre méthode.</h2><p>LF Vision Football est né d'une envie simple : partager une expérience d'éducateur, des réflexions, des outils et une façon de travailler pour aider chacun à développer sa propre méthodologie et sa propre vision du football.</p><blockquote>« Je ne vous donne pas une méthode à suivre. Je vous donne des clés pour construire la vôtre. »</blockquote></section>
-</main><footer><b>LF VISION FOOTBALL</b><span>Construire • Transmettre • Faire progresser</span><small>© 2026 LF Vision Football</small></footer><script src='script.js'></script></body></html>
-<!-- publication -->
+
+<section class="hero" id="accueil">
+  <div class="hero-content">
+
+    <div class="eyebrow">Partager pour faire progresser</div>
+
+    <h1>
+      Construisez votre propre<br>
+      <span>vision du football</span>
+    </h1>
+
+    <p>
+      Je partage mon expérience, ma façon de construire une saison,
+      d’accompagner un groupe et de faire progresser les joueurs.
+      Pas une méthode à recopier : des clés pour construire la vôtre.
+    </p>
+
+    <div class="actions">
+      <a href="#demarche" class="btn btn-primary">
+        Découvrir ma démarche →
+      </a>
+
+      <a href="#outils" class="btn btn-secondary">
+        Accéder aux outils
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="pillars">
+
+  <div class="pillar">
+    <div class="icon">◎</div>
+    <strong>Accompagner</strong>
+    <span>Des joueurs dans leur développement</span>
+  </div>
+
+  <div class="pillar">
+    <div class="icon">▥</div>
+    <strong>Structurer</strong>
+    <span>Des séances et des cycles cohérents</span>
+  </div>
+
+  <div class="pillar">
+    <div class="icon">◉</div>
+    <strong>Partager</strong>
+    <span>Des contenus concrets et accessibles</span>
+  </div>
+
+  <div class="pillar">
+    <div class="icon">◎</div>
+    <strong>Faire progresser</strong>
+    <span>Sur et en dehors du terrain</span>
+  </div>
+
+</section>
+
+
+<section class="quote">
+  <blockquote>
+    Je ne vous donne pas une méthode à suivre.
+    Je vous donne des clés pour construire la vôtre.
+  </blockquote>
+</section>
+
+
+<section class="explore">
+
+  <div class="section-head">
+    <small>Des ressources pour les éducateurs</small>
+    <h2>Explorez le contenu du site</h2>
+  </div>
+
+  <div class="cards">
+
+    <a href="#demarche" class="card">
+      <div class="num">01</div>
+      <h3>Ma démarche</h3>
+      <p>
+        Ma façon de construire, observer, planifier,
+        intervenir et adapter au fil de la saison.
+      </p>
+      <div class="arrow">→</div>
+    </a>
+
+    <a href="#guide" class="card">
+      <div class="num">02</div>
+      <h3>Le guide</h3>
+      <p>
+        Réfléchir au rôle de l’éducateur, à sa posture,
+        sa communication et sa relation au joueur.
+      </p>
+      <div class="arrow">→</div>
+    </a>
+
+    <a href="#outils" class="card">
+      <div class="num">03</div>
+      <h3>La boîte à outils</h3>
+      <p>
+        Des supports pratiques pour observer, analyser,
+        planifier et faire progresser.
+      </p>
+      <div class="arrow">→</div>
+    </a>
+
+    <a href="#apropos" class="card">
+      <div class="num">04</div>
+      <h3>À propos</h3>
+      <p>
+        Comprendre l’esprit de LF Vision Football
+        et ce que je souhaite partager avec les éducateurs.
+      </p>
+      <div class="arrow">→</div>
+    </a>
+
+  </div>
+</section>
+
+
+<section class="demarche" id="demarche">
+
+  <div class="section-head">
+    <small>Ma démarche</small>
+    <h2>Une direction, pas un programme figé.</h2>
+  </div>
+
+  <p class="intro">
+    Observer, comprendre, planifier, construire, intervenir,
+    évaluer et adapter : une démarche vivante, toujours reliée au terrain.
+  </p>
+
+  <div class="steps">
+
+    <div class="step">
+      <b>01</b>
+      <strong>Connaître son groupe</strong>
+      <span>Observer avant de décider.</span>
+    </div>
+
+    <div class="step">
+      <b>02</b>
+      <strong>Définir son projet</strong>
+      <span>Donner une direction.</span>
+    </div>
+
+    <div class="step">
+      <b>03</b>
+      <strong>Fixer ses priorités</strong>
+      <span>Choisir ce qui compte maintenant.</span>
+    </div>
+
+    <div class="step">
+      <b>04</b>
+      <strong>Planifier</strong>
+      <span>Structurer sans figer.</span>
+    </div>
+
+    <div class="step">
+      <b>05</b>
+      <strong>Construire ses séances</strong>
+      <span>Créer des situations qui ont du sens.</span>
+    </div>
+
+    <div class="step">
+      <b>06</b>
+      <strong>Accompagner le joueur</strong>
+      <span>Individualiser pour faire progresser.</span>
+    </div>
+
+    <div class="step">
+      <b>07</b>
+      <strong>Piloter le match</strong>
+      <span>Observer, comprendre et intervenir.</span>
+    </div>
+
+    <div class="step">
+      <b>08</b>
+      <strong>Évaluer</strong>
+      <span>Mesurer pour comprendre.</span>
+    </div>
+
+    <div class="step">
+      <b>09</b>
+      <strong>Adapter</strong>
+      <span>Faire évoluer son travail.</span>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="guide" id="guide">
+
+  <div class="section-head">
+    <small>Comprendre</small>
+    <h2>Le guide de l’éducateur</h2>
+  </div>
+
+  <div class="guide-grid">
+
+    <div class="guide-item"><b>01</b>Notre rôle d’éducateur</div>
+    <div class="guide-item"><b>02</b>Notre philosophie</div>
+    <div class="guide-item"><b>03</b>Les qualités de l’éducateur</div>
+    <div class="guide-item"><b>04</b>La posture de l’éducateur</div>
+    <div class="guide-item"><b>05</b>La relation éducateur / joueur</div>
+    <div class="guide-item"><b>06</b>La conduite de l’entraînement</div>
+    <div class="guide-item"><b>07</b>L’évaluation et le suivi</div>
+    <div class="guide-item"><b>08</b>Le développement continu</div>
+    <div class="guide-item"><b>09</b>L’éthique et les valeurs</div>
+    <div class="guide-item"><b>10</b>La gestion du groupe</div>
+    <div class="guide-item"><b>11</b>La communication et l’écoute</div>
+    <div class="guide-item"><b>12</b>L’adaptation et la progression</div>
+
+  </div>
+</section>
+
+
+<section class="tools" id="outils">
+
+  <div class="section-head">
+    <small>Agir</small>
+    <h2>La boîte à outils</h2>
+  </div>
+
+  <div class="tool-grid">
+
+    <div class="tool">
+      <strong>Thème de travail</strong>
+      <span>Définir le thème, les objectifs et organiser sa séance.</span>
+    </div>
+
+    <div class="tool">
+      <strong>Fiche séance</strong>
+      <span>Structurer une séance complète et lisible.</span>
+    </div>
+
+    <div class="tool">
+      <strong>Plan de jeu</strong>
+      <span>Préparer le match, les principes et les consignes.</span>
+    </div>
+
+    <div class="tool">
+      <strong>Bilan de match</strong>
+      <span>Analyser la performance et identifier la suite.</span>
+    </div>
+
+    <div class="tool">
+      <strong>Profil du joueur</strong>
+      <span>Observer les dimensions technique, tactique, physique et mentale.</span>
+    </div>
+
+    <div class="tool">
+      <strong>Observation match – joueur</strong>
+      <span>Analyser la performance individuelle en situation réelle.</span>
+    </div>
+
+    <div class="tool">
+      <strong>Suivi de progression</strong>
+      <span>Mesurer l’évolution et fixer les prochains objectifs.</span>
+    </div>
+
+    <div class="tool">
+      <strong>Planification annuelle</strong>
+      <span>Donner une direction générale à la saison.</span>
+    </div>
+
+    <div class="tool">
+      <strong>Planification du cycle</strong>
+      <span>Structurer le travail et l’adapter semaine après semaine.</span>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="about" id="apropos">
+
+  <div class="about-inner">
+
+    <div class="eyebrow">À propos</div>
+
+    <h2>
+      Partager une expérience.<br>
+      Pas imposer une méthode.
+    </h2>
+
+    <p>
+      LF Vision Football est né d’une envie simple : partager une expérience
+      de terrain, une façon de réfléchir au football et des outils construits
+      au fil des saisons. L’objectif est d’aider chaque éducateur à comprendre,
+      structurer son travail et progressivement construire sa propre vision.
+    </p>
+
+  </div>
+</section>
+
+</main>
+
+
+<footer>
+
+  <div class="footer-brand">
+    <img src="logo-lf.png" alt="LF Vision Football">
+    <div>
+      <strong>LF VISION FOOTBALL</strong><br>
+      <small>Construire • Transmettre • Faire progresser</small>
+    </div>
+  </div>
+
+  <small>© 2026 LF Vision Football</small>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
