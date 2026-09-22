@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paiement confirmé — LF Vision Football</title>
+</head>
+
+<body>
+  <h1>Merci pour votre achat ! ⚽</h1>
+
+  <p>Votre paiement LF Vision Football a bien été enregistré.</p>
+
+  <p id="status">Vérification sécurisée de votre paiement en cours...</p>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const sessionId = params.get("session_id");
+
+    async function verifierPaiement() {
+      const status = document.getElementById("status");
+
+      if (!sessionId) {
+        status.textContent = "Impossible de vérifier le paiement.";
+        return;
+      }
+
+      try {
+        const response = await fetch(
+          "/.netlify/functions/secure-download?session_id=" +
+          encodeURIComponent(sessionId)
+        );
+
+        const data = await response.json();
+
+        if (response.ok && data.authorized === true) {
+          status.textContent =
+            "✅ Paiement confirmé. Préparation de votre téléchargement...";
+        } else {
+          status.textContent =
+            "❌ Le paiement n'a pas pu être confirmé.";
+        }
+      } catch (error) {
+        status.textContent =
+          "Une erreur est survenue pendant la vérification du paiement.";
+      }
+    }
+
+    verifierPaiement();
+  </script>
+</body>
+</html>
